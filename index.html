@@ -6,12 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<script src="./node_modules/jquery/dist/jquery.js">
+</script>
 <body>
-    <div class="content">
-        <h1>syssb..663</h1>
+    <div class="wrapper">
+        <div class="content">
+            <h1 class="title"></h1>
+        </div>
     </div>
 </body>
 <script>
-    let time = new Date();
+    var start = new Date('2018-03-16 00:00:00');
+    function getTime(time) { 
+        var now = new Date();
+        var time = now - start;
+        let date = Math.floor(time/(24*3600*1000));
+        let hour = Math.floor(time/3600000%24);
+        let min = Math.floor(time/60000%60);
+        let sec = Math.floor(time/1000%60);
+        $(".title").text(`在一起${date}天${hour}小时${min}分钟${sec}秒啦`);
+     }
+    setInterval(() => {
+       getTime();
+    }, 100);
 </script>
+<style>
+    .content {
+        margin-top: 300px;
+        text-align: center;
+    }
+    .title {
+        display: inline-block;
+        color: #795548;
+    }
+</style>
 </html>
